@@ -1,0 +1,47 @@
+{
+    "name": "daskeyboard-applet--gpu-usage",
+    "displayName": "GPU Usage",
+    "version": "1.0.0",
+    "description": "Displays GPU memory usage.",
+    "longDescription": "Monitors GPU memory usage on your Q keyboard",
+    "officialProductName": "GPU Usage",
+    "publisher": "Brandon Schabell",
+    "icon": "assets/icon.png",
+    "publisherName": "Brandon Schabell",
+    "authorName": "Brandon Schabell",
+    "authorUrl": "https://www.brandonschabell.com",
+    "licenseUrl": "https://github.com/brandonschabell/daskeyboard-applet-gpu-usage/blob/master/LICENSE",
+    "homePageUrl": "https://www.brandonschabell.com",
+    "developerRepoUrl": "https://github.com/brandonschabell/daskeyboard-applet-gpu-usage",
+    "issuesUrl": "https://github.com/brandonschabell/daskeyboard-applet-gpu-usage/issues",
+    "changelogUrl": "CHANGELOG.md",
+    "readMeUrl": "README.md",
+    "readMeEndUserUrl": "README_ENDUSER.md",
+    "license": "MIT",
+    "main": "index.js",
+    "scripts": {
+      "test": "mocha"
+    },
+    "engines": {
+      "das-keyboard-q": "3.2.2"
+    },
+    "dependencies": {
+      "daskeyboard-applet": "2.11.3",
+      "node-nvidia-smi": "^1.0.0"
+    },
+    "devDependencies": {
+        "mocha": "^5.2.0"
+    },
+    "qConfig": {
+      "geometry": {
+        "width": 1,
+        "height": 1,
+        "defaults": {
+          "origin": {
+            "x": 0,
+            "y": 1
+          }
+        }
+      }
+    }
+  }
