@@ -2,6 +2,10 @@
 
 Monitors GPU memory usage on your Q keyboard.
 
+## Requirements
+
+> NVIDIA client software must be installed on your system.
+
 ## Example
 
 The "N" key in the image below is green because the GPU memory usage is currently under 20%.
