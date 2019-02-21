@@ -20,26 +20,44 @@ class GPUUsage extends q.DesktopApp {
     async run() {
         return this.getGPUUsage().then(percent => {
             // return signal every 3000ms
-            return new q.Signal({
-                points: [this.generateColor(percent)],
-                name: "GPU Usage",
-                message: "GPU Memory used: " + Math.round(percent) + "%",
-                isMuted: true, // don't flash the Q button on each signal
-            });
+
+            // percent equals to -1 means NVIDIA compatibility error
+            if(percent!=-1){
+                return new q.Signal({
+                    points: [this.generateColor(percent)],
+                    name: "GPU Usage",
+                    message: "GPU Memory used: " + Math.round(percent) + "%",
+                    isMuted: true, // don't flash the Q button on each signal
+                });
+            }else{
+                return new q.Signal({
+                    points:[[new q.Point('#FF0000',"BLINK")]],
+                    name: "GPU Usage",
+                    message: "Error: command cannot be executed. \n Please read documentation.",
+                    isMuted: true, // don't flash the Q button on each signal
+                });
+            }
+
         });
     }
 
     async getGPUUsage() {
         return new Promise((resolve) => {
             smi(function (err, data) {
+                var percent = -1
                 // handle errors
                 if (err) {
                   logger.error(err);
                 }
-                var memory_object = data.nvidia_smi_log.gpu.fb_memory_usage
-                var used = parseInt(memory_object.used.replace(' MiB', ''))
-                var total = parseInt(memory_object.total.replace(' MiB', ''))
-                var percent = (used / total) * 100
+
+                // handle NVIDIA compatibility
+                if(data){
+                    var memory_object = data.nvidia_smi_log.gpu.fb_memory_usage
+                    var used = parseInt(memory_object.used.replace(' MiB', ''))
+                    var total = parseInt(memory_object.total.replace(' MiB', ''))
+                    percent = (used / total) * 100
+                }
+
                 resolve(percent)
             });
         })
