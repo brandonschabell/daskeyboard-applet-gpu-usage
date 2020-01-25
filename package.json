@@ -1,7 +1,7 @@
 {
     "name": "daskeyboard-applet--gpu-usage",
     "displayName": "GPU Usage",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Displays GPU memory usage.",
     "longDescription": "Monitors GPU memory usage on your Q keyboard",
     "officialProductName": "GPU Usage",
