@@ -4,7 +4,9 @@ Monitors GPU memory usage on your Q keyboard.
 
 ## Requirements
 
-> NVIDIA client software must be installed on your system.
+NVIDIA client software must be installed on your system.
+
+**Windows:** Add `C:\Program Files\NVIDIA Corporation\NVSMI` to your PATH variable and restart the software.
 
 ## Example
 
